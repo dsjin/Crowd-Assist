@@ -12,8 +12,10 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import th.ac.kmitl.it.crowdassist.contract.SignInContract
 import th.ac.kmitl.it.crowdassist.presenter.SignInPresenter
+import th.ac.kmitl.it.crowdassist.util.PermissionHelper
 
 class SignInActivity : AppCompatActivity(), SignInContract.View {
+    private val permissionHelper = PermissionHelper(this)
     private val presenter = SignInPresenter(this, this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,5 +66,10 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
                 })
                 .setNegativeButton("ไม่ใช่", null)
                 .show()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        permissionHelper.setPermission()
     }
 }

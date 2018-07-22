@@ -58,7 +58,7 @@ class DatabaseHelper(val ctx : Context){
         mDatabase.getReference("user_id").child(username).addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onCancelled(p0: DatabaseError) {
-                        Log.d("SignIp", "Cancelled by mDatabase Reference \"user_id\" ")
+                        Log.d("SignUp", "Cancelled by mDatabase Reference \"user_id\" ")
                     }
 
                     override fun onDataChange(p0: DataSnapshot) {

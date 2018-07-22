@@ -11,7 +11,7 @@ class SignInPresenter(val ctx : Context, val view : SignInContract.View) : SignI
     override fun onSignInButtonClicked() {
         val editText = view.getAllEditText()
         view.showProgressBar()
-        databaseHelper.signIn(editText?.get("userName")?.text.toString(), editText?.get("password")?.text.toString(), view)
+        databaseHelper.signIn(editText?.get("username")?.text.toString(), editText?.get("password")?.text.toString(), view)
     }
 
     override fun onSignUpButtonClick() {

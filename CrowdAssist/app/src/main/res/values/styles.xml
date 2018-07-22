@@ -25,6 +25,11 @@
         <item name="editTextStyle">@style/CustomFontTextStyle</item>
     </style>
 
+    <style name="AppTheme.SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
     <style name="CustomFontTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/trirong</item>
     </style>
