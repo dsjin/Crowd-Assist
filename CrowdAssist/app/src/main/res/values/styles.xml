@@ -14,8 +14,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textViewStyle">@style/CustomFontTextViewStyle</item>
         <item name="editTextStyle">@style/CustomFontTextStyle</item>
-        <item name="cardViewStyle">@style/CardView</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
     <style name="AppTheme.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
@@ -41,17 +39,5 @@
 
     <style name="CircularProgress" parent="Theme.AppCompat.Light">
         <item name="colorAccent">#DB4537</item>
-    </style>
-    <style name="NavDrawerTextStyle">
-        <item name="android:fontFamily">@font/trirong_w_light</item>
-        <item name="android:textSize">15sp</item>
-    </style>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="RatingBarRed" parent="Widget.AppCompat.RatingBar">
-        <item name="colorControlActivated">@color/colorPrimary</item>
-    </style>
-    <style name="RatingBarRedMaterialSmall" parent="android:style/Widget.Material.RatingBar.Small">
-        <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 </resources>
