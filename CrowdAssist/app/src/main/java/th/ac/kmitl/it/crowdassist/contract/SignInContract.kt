@@ -5,7 +5,7 @@ import android.widget.EditText
 interface SignInContract{
     interface Presenter{
         fun onSignInButtonClicked()
-        fun onSignUpButtonClick()
+        fun onSignUpButtonClicked()
     }
     interface View{
         fun showProgressBar()

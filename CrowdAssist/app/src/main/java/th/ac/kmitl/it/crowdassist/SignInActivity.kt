@@ -26,7 +26,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
             presenter.onSignInButtonClicked()
         })
         signUpButton.setOnClickListener({
-            presenter.onSignUpButtonClick()
+            presenter.onSignInButtonClicked()
         })
     }
 

@@ -14,7 +14,7 @@ class SignInPresenter(val ctx : Context, val view : SignInContract.View) : SignI
         databaseHelper.signIn(editText?.get("username")?.text.toString(), editText?.get("password")?.text.toString(), view)
     }
 
-    override fun onSignUpButtonClick() {
+    override fun onSignUpButtonClicked() {
         val intent = Intent(ctx, SignUpActivity::class.java)
         ctx.startActivity(intent)
     }
