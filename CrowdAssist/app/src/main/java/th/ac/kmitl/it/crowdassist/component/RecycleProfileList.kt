@@ -6,20 +6,26 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import th.ac.kmitl.it.crowdassist.R
 import th.ac.kmitl.it.crowdassist.modal.ProfileListModel
+
+
 
 class RecycleProfileList: RecyclerView.Adapter<RecycleProfileList.ViewHolder>{
 
     private var list: MutableList<ProfileListModel>? = null
     private var ctx: Context? = null
     private var mode: String? = null
+    private var lastPosition = -1
+    private var recyclerContext:Context? = null
 
-    constructor(list: MutableList<ProfileListModel>?, ctx : Context?, mode : String?){
+    constructor(list: MutableList<ProfileListModel>?, ctx : Context?, mode : String?, recyclerContext : Context?){
         this.list = list
         this.ctx = ctx
         this.mode = mode
+        this.recyclerContext = recyclerContext
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,10 +37,11 @@ class RecycleProfileList: RecyclerView.Adapter<RecycleProfileList.ViewHolder>{
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dataItem = list?.get(position)
         holder.title.text = (dataItem?.title)
-        holder.cardView.setOnClickListener(View.OnClickListener {
+        holder.cardView.setOnClickListener{
 
-        })
+        }
         holder.cardView.tag = dataItem
+        setAnimation(holder.itemView, position)
     }
 
     override fun getItemCount(): Int {
@@ -48,6 +55,15 @@ class RecycleProfileList: RecyclerView.Adapter<RecycleProfileList.ViewHolder>{
         init {
             title = itemView.findViewById(R.id.title)
             cardView = itemView.findViewById(R.id.cardView)
+        }
+    }
+
+    private fun setAnimation(viewToAnimate: View, position: Int) {
+        if (position > lastPosition) {
+            val animation = AnimationUtils.loadAnimation(recyclerContext, R.anim.item_animation_fall_down)
+            animation.startOffset = 100
+            viewToAnimate.startAnimation(animation)
+            lastPosition = position
         }
     }
 }

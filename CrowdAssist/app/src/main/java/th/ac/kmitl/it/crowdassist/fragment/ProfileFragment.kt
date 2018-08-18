@@ -1,6 +1,7 @@
 package th.ac.kmitl.it.crowdassist.fragment
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.CardView
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
+import th.ac.kmitl.it.crowdassist.ProfileListActivity
 
 import th.ac.kmitl.it.crowdassist.R
 import java.util.*
@@ -51,15 +53,21 @@ class ProfileFragment : Fragment() {
         emergency = view?.findViewById(R.id.emergency_count)
         nonEmergency = view?.findViewById(R.id.general_count)
         assistance = view?.findViewById(R.id.assistance_count)
-        emergency?.setOnClickListener(View.OnClickListener {
-
-        })
-        nonEmergency?.setOnClickListener(View.OnClickListener {
-
-        })
-        assistance?.setOnClickListener(View.OnClickListener {
-
-        })
+        emergency?.setOnClickListener{
+            val intent = Intent(activity, ProfileListActivity::class.java)
+            intent.putExtra("mode", "emergency")
+            startActivity(intent)
+        }
+        nonEmergency?.setOnClickListener{
+            val intent = Intent(activity, ProfileListActivity::class.java)
+            intent.putExtra("mode", "non-emergency")
+            startActivity(intent)
+        }
+        assistance?.setOnClickListener{
+            val intent = Intent(activity, ProfileListActivity::class.java)
+            intent.putExtra("mode", "assistance")
+            startActivity(intent)
+        }
         emergencyCount = view?.findViewById(R.id.count1)
         nonEmergencyCount = view?.findViewById(R.id.count2)
         assistanceCount = view?.findViewById(R.id.count3)

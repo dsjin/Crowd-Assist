@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.squareup.picasso.Picasso
 import th.ac.kmitl.it.crowdassist.fragment.MainFragment
+import th.ac.kmitl.it.crowdassist.fragment.ProfileFragment
 import th.ac.kmitl.it.crowdassist.fragment.SettingFragment
 import th.ac.kmitl.it.crowdassist.util.GoToCallback
 import th.ac.kmitl.it.crowdassist.util.LogoutCallback
@@ -186,18 +187,17 @@ class MainActivity : AppCompatActivity(), GoToCallback , SetButtonListenerCallba
             R.id.nav_home -> if (!isHome!!) {
                 isHome = true
                 getFragment(MainFragment())
-                title?.setText(R.string.app_name)
-                title?.setVisibility(View.GONE)
-                logo?.setVisibility(View.VISIBLE)
+                title?.text = getString(R.string.app_name)
+                title?.visibility = (View.GONE)
+                logo?.visibility = (View.VISIBLE)
             }
             R.id.nav_profile -> {
-                /*
                 requestingFab?.hide()
                 isHome = false
-                getFragment(ProflieFragment())
-                title?.setText("โปรไฟล์")
-                title?.setVisibility(View.VISIBLE)
-                logo?.setVisibility(View.GONE)*/
+                getFragment(ProfileFragment())
+                title?.text = ("โปรไฟล์")
+                title?.visibility = (View.VISIBLE)
+                logo?.visibility = (View.GONE)
             }
             R.id.nav_setting -> {
                 requestingFab?.hide()
