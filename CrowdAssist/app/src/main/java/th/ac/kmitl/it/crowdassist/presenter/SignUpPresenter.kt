@@ -1,21 +1,18 @@
 package th.ac.kmitl.it.crowdassist.presenter
 
-import android.content.Context
 import th.ac.kmitl.it.crowdassist.contract.SignUpContract
 import th.ac.kmitl.it.crowdassist.modal.UserSignUpModal
 import th.ac.kmitl.it.crowdassist.util.DatabaseHelper
 
-class SignUpPresenter(val ctx : Context, val view : SignUpContract.View) : SignUpContract.Presentation{
-
-    private val databaseHelper = DatabaseHelper(ctx)
+class SignUpPresenter(val databaseHelper : DatabaseHelper, val view : SignUpContract.View) : SignUpContract.Presentation{
 
     override fun onSignUpClicked() {
         view.showProgressBar()
-        databaseHelper.signUp(getEditTextData(), view)
+        databaseHelper.signUp(getTextFillData(), view)
     }
 
-    override fun getEditTextData(): UserSignUpModal {
-        val editText = view.getAllEditText()
-        return UserSignUpModal(editText?.get("username")?.text.toString(), editText?.get("email")?.text.toString(), editText?.get("firstName")?.text.toString(), editText?.get("lastName")?.text.toString(), editText?.get("idCard")?.text.toString(), "user", editText?.get("password").toString(), editText?.get("rePassword").toString())
+    override fun getTextFillData(): UserSignUpModal {
+        val textFills = view.getAllTextFill()
+        return UserSignUpModal(textFills?.get("username")!!, textFills?.get("email")!!, textFills?.get("firstName")!!, textFills?.get("lastName")!!, textFills?.get("idCard")!!, "user", textFills?.get("password")!!, textFills?.get("rePassword")!!)
     }
 }

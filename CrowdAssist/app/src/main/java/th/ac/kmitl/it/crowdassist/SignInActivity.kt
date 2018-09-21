@@ -12,11 +12,12 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import th.ac.kmitl.it.crowdassist.contract.SignInContract
 import th.ac.kmitl.it.crowdassist.presenter.SignInPresenter
+import th.ac.kmitl.it.crowdassist.util.DatabaseHelper
 import th.ac.kmitl.it.crowdassist.util.PermissionHelper
 
 class SignInActivity : AppCompatActivity(), SignInContract.View {
     private val permissionHelper = PermissionHelper(this)
-    private val presenter = SignInPresenter(this, this)
+    private val presenter = SignInPresenter(DatabaseHelper(this), this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
@@ -46,10 +47,10 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
         finish()
     }
 
-    override fun getAllEditText(): MutableMap<String, EditText>? {
-        val listOfEditText = hashMapOf<String, EditText>()
-        listOfEditText.put("username", findViewById(R.id.username_input))
-        listOfEditText.put("password", findViewById(R.id.password_input))
+    override fun getAllTextFill(): MutableMap<String, String>? {
+        val listOfEditText = hashMapOf<String, String>()
+        listOfEditText.put("username", (findViewById<EditText>(R.id.username_input)).text.toString())
+        listOfEditText.put("password", (findViewById<EditText>(R.id.password_input)).text.toString())
         return  listOfEditText
     }
 
@@ -71,5 +72,10 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
     override fun onStart() {
         super.onStart()
         permissionHelper.setPermission()
+    }
+
+    override fun startActivity(activity : Class<out Activity>){
+        val intent = Intent(this, activity)
+        startActivity(intent)
     }
 }

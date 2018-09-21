@@ -26,8 +26,13 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import th.ac.kmitl.it.crowdassist.contract.CreateGeneralRequestContract
 import th.ac.kmitl.it.crowdassist.presenter.CreateGeneralRequestPresenter
+import th.ac.kmitl.it.crowdassist.util.DatabaseHelper
+import th.ac.kmitl.it.crowdassist.util.LocationHelper
 
 class CreateGeneralRequestActivity : AppCompatActivity(), CreateGeneralRequestContract.View , OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
@@ -38,7 +43,7 @@ class CreateGeneralRequestActivity : AppCompatActivity(), CreateGeneralRequestCo
     private var mainLayout: android.support.constraint.ConstraintLayout? = null
     private var imageLayout: RelativeLayout? = null
     private var mapType : MutableMap<String, String>? = null
-    private val presenter = CreateGeneralRequestPresenter(this, this)
+    private val presenter = CreateGeneralRequestPresenter(DatabaseHelper(this), this, Schedulers.io(), AndroidSchedulers.mainThread())
     private var mMap: GoogleMap? = null
     private var mapFragment: SupportMapFragment? = null
     private var location: Location? = null
@@ -160,10 +165,10 @@ class CreateGeneralRequestActivity : AppCompatActivity(), CreateGeneralRequestCo
         finish()
     }
 
-    override fun getAllEditText(): MutableMap<String, EditText> {
-        val editTexts = mutableMapOf<String, EditText>()
-        editTexts.put("description", description!!)
-        return editTexts
+    override fun getAllTextFill(): MutableMap<String, String> {
+        val textFills = mutableMapOf<String, String>()
+        textFills.put("description", description?.text.toString())
+        return textFills
     }
 
     override fun getRequesterTypeRadioGroup(): RadioGroup {
@@ -263,5 +268,16 @@ class CreateGeneralRequestActivity : AppCompatActivity(), CreateGeneralRequestCo
                 Log.e("Activity Result", error.message)
             }
         }
+    }
+
+    override fun getLocationName(location : Location?) : String{
+        return LocationHelper.getLocationName( this , location)
+    }
+
+    override fun startCropImage() {
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.OFF)
+                .setCropShape(CropImageView.CropShape.RECTANGLE)
+                .start(this)
     }
 }

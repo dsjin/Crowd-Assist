@@ -1,6 +1,6 @@
 package th.ac.kmitl.it.crowdassist.contract
 
-import android.widget.EditText
+import android.app.Activity
 
 interface SignInContract{
     interface Presenter{
@@ -12,6 +12,7 @@ interface SignInContract{
         fun hideProgressBar()
         fun finishActivity()
         fun showSnackBar(message : String, during : Int)
-        fun getAllEditText() : MutableMap<String, EditText>?
+        fun getAllTextFill() : MutableMap<String, String>?
+        fun startActivity(activity : Class<out Activity>)
     }
 }

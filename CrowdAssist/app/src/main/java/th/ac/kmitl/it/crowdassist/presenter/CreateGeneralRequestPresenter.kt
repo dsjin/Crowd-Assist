@@ -1,18 +1,12 @@
 package th.ac.kmitl.it.crowdassist.presenter
 
-import android.content.Context
 import android.location.Location
 import android.net.Uri
 import android.support.design.widget.Snackbar
 import android.util.Log
-import android.widget.EditText
-import com.theartofdev.edmodo.cropper.CropImage
-import com.theartofdev.edmodo.cropper.CropImageView
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.Scheduler
 import io.reactivex.functions.Consumer
-import io.reactivex.schedulers.Schedulers
-import th.ac.kmitl.it.crowdassist.CreateGeneralRequestActivity
 import th.ac.kmitl.it.crowdassist.R
 import th.ac.kmitl.it.crowdassist.contract.CreateGeneralRequestContract
 import th.ac.kmitl.it.crowdassist.modal.GeneralRequestModel
@@ -22,13 +16,12 @@ import th.ac.kmitl.it.crowdassist.util.LocationHelper
 import java.io.IOException
 import java.util.concurrent.Callable
 
-class CreateGeneralRequestPresenter(val ctx : Context, val view : CreateGeneralRequestContract.View) : CreateGeneralRequestContract.Presenter{
-    private val databaseHelper = DatabaseHelper(ctx)
-    private val emptyEditText: ((Map.Entry<String, EditText>)) -> Boolean = { it.value.text.isEmpty() }
+class CreateGeneralRequestPresenter(val databaseHelper: DatabaseHelper, val view : CreateGeneralRequestContract.View, val ioScheduler : Scheduler, val mainScheduler : Scheduler) : CreateGeneralRequestContract.Presenter{
+    private val emptyEditText: ((Map.Entry<String, String>)) -> Boolean = { it.value.isEmpty() }
 
     override fun onSendButtonClicked(location : Location?, type : String?, uri : Uri?) {
-        val editText = view.getAllEditText()
-        if (!editText.filter(emptyEditText).isEmpty()){
+        val textFill = view.getAllTextFill()
+        if (!textFill.filter(emptyEditText).isEmpty()){
             view.showSnackBar("กรุณาใส่ข้อมูลให้ครบ", Snackbar.LENGTH_SHORT)
             return
         }
@@ -39,13 +32,13 @@ class CreateGeneralRequestPresenter(val ctx : Context, val view : CreateGeneralR
         }
         val data = GeneralRequestModel()
         data.type = type
-        data.description = editText.get("description")?.text.toString()
+        data.description = textFill["description"]
         data.lat = location?.latitude
         data.lng = location?.longitude
         data.time = 1
         data.requesterType = requesterTypeString
         try {
-            data.title = LocationHelper.getLocationName( ctx , location)
+            data.title = view.getLocationName(location)
         } catch (exception: IOException) {
             Log.e("LocationHelper", exception.message)
         }
@@ -54,17 +47,14 @@ class CreateGeneralRequestPresenter(val ctx : Context, val view : CreateGeneralR
         view.showProgreesLayout()
         view.showProgressBar()
         Observable.fromCallable(resolveCallable(location!!))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(ioScheduler)
+                .observeOn(mainScheduler)
                 .take(1)
                 .subscribe(action1(data, uri!!))
     }
 
     override fun onSelectPhotoButtonClicked() {
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.OFF)
-                .setCropShape(CropImageView.CropShape.RECTANGLE)
-                .start(ctx as CreateGeneralRequestActivity)
+        view.startCropImage()
     }
 
     private fun action1(data: Request, uri : Uri): Consumer<String> {

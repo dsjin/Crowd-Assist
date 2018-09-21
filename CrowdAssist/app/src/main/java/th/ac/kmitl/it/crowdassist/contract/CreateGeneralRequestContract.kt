@@ -3,7 +3,6 @@ package th.ac.kmitl.it.crowdassist.contract
 
 import android.location.Location
 import android.net.Uri
-import android.widget.EditText
 import android.widget.RadioGroup
 
 interface CreateGeneralRequestContract{
@@ -18,9 +17,11 @@ interface CreateGeneralRequestContract{
         fun showMainLayout()
         fun hideMainLayout()
         fun finishActivity()
-        fun getAllEditText() : MutableMap<String, EditText>
+        fun getAllTextFill() : MutableMap<String, String>
         fun getRequesterTypeRadioGroup() : RadioGroup
         fun showSnackBar(message : String, during : Int)
+        fun getLocationName(location : Location?) : String
+        fun startCropImage()
     }
 
     interface Presenter{
