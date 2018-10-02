@@ -48,10 +48,10 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
     }
 
     override fun getAllTextFill(): MutableMap<String, String>? {
-        val listOfEditText = hashMapOf<String, String>()
-        listOfEditText.put("username", (findViewById<EditText>(R.id.username_input)).text.toString())
-        listOfEditText.put("password", (findViewById<EditText>(R.id.password_input)).text.toString())
-        return  listOfEditText
+        val textFills = hashMapOf<String, String>()
+        textFills.put("username", (findViewById<EditText>(R.id.username_input)).text.toString())
+        textFills.put("password", (findViewById<EditText>(R.id.password_input)).text.toString())
+        return  textFills
     }
 
     override fun showSnackBar(message: String, during: Int) {

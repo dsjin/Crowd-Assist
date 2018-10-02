@@ -16,8 +16,8 @@ import th.ac.kmitl.it.crowdassist.R
 import th.ac.kmitl.it.crowdassist.contract.CreateGeneralRequestContract
 import th.ac.kmitl.it.crowdassist.contract.SignInContract
 import th.ac.kmitl.it.crowdassist.contract.SignUpContract
-import th.ac.kmitl.it.crowdassist.modal.Request
-import th.ac.kmitl.it.crowdassist.modal.UserSignUpModal
+import th.ac.kmitl.it.crowdassist.model.Request
+import th.ac.kmitl.it.crowdassist.model.UserSignUpModel
 import java.util.*
 
 class DatabaseHelper(val ctx : Context){
@@ -29,7 +29,7 @@ class DatabaseHelper(val ctx : Context){
     private val SP_PROFILE = "profile"
     private val SP_LOCATION = "location_information"
 
-    fun signUp(data : UserSignUpModal, view : SignUpContract.View){
+    fun signUp(data : UserSignUpModel, view : SignUpContract.View){
         if (data.password != data.rePassword){
             view.showSnackBar(ctx.getString(R.string.password_not_match), Snackbar.LENGTH_SHORT)
             return
@@ -140,5 +140,16 @@ class DatabaseHelper(val ctx : Context){
         editor.putInt("assistance", 0)
         editor.putString("mode", "Helped")
         editor.apply()
+    }
+
+    fun rate(uid: String, userUid: String, rating: Double?, comment: String, listener: OnCompleteListener<Void>) {
+        val ref = mFireStore.collection("request").document(uid).collection(userUid).document(mUser?.uid!!)
+        val spProfile = ctx.getSharedPreferences(SP_PROFILE, Context.MODE_PRIVATE)
+        val data = mutableMapOf<String, Any>()
+        data.put("rating", rating!!)
+        data.put("comment", comment)
+        data.put("name", spProfile.getString("name", ""))
+        data.put("timestamp", Calendar.getInstance().timeInMillis)
+        ref.set(data).addOnCompleteListener(listener)
     }
 }

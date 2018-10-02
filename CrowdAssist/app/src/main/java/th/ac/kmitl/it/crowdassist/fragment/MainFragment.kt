@@ -30,7 +30,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import th.ac.kmitl.it.crowdassist.R
-import th.ac.kmitl.it.crowdassist.modal.Request
+import th.ac.kmitl.it.crowdassist.model.Request
 import th.ac.kmitl.it.crowdassist.util.GoToCallback
 import th.ac.kmitl.it.crowdassist.util.LocationHelper
 import th.ac.kmitl.it.crowdassist.util.SetButtonListenerCallback

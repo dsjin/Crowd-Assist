@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import th.ac.kmitl.it.crowdassist.R
-import th.ac.kmitl.it.crowdassist.modal.ProfileListModel
+import th.ac.kmitl.it.crowdassist.model.ProfileListModel
 
 
 

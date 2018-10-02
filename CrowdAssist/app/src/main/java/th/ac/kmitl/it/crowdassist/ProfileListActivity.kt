@@ -16,7 +16,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import th.ac.kmitl.it.crowdassist.component.RecycleProfileList
-import th.ac.kmitl.it.crowdassist.modal.ProfileListModel
+import th.ac.kmitl.it.crowdassist.model.ProfileListModel
 import th.ac.kmitl.it.crowdassist.util.ConvertHelper
 
 

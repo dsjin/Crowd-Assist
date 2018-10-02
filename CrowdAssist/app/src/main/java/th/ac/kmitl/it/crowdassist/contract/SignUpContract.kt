@@ -1,12 +1,12 @@
 package th.ac.kmitl.it.crowdassist.contract
 
 import android.app.Activity
-import th.ac.kmitl.it.crowdassist.modal.UserSignUpModal
+import th.ac.kmitl.it.crowdassist.model.UserSignUpModel
 
 interface SignUpContract{
     interface Presentation{
         fun onSignUpClicked()
-        fun getTextFillData() : UserSignUpModal
+        fun getTextFillData() : UserSignUpModel
     }
     interface View{
         fun showProgressBar()

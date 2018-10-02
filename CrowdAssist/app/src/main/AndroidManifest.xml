@@ -38,7 +38,8 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".ProfileListActivity" />
-        <activity android:name=".CreateGeneralRequestActivity"></activity>
+        <activity android:name=".CreateGeneralRequestActivity" />
+        <activity android:name=".RateActivity"></activity>
     </application>
 
 </manifest>

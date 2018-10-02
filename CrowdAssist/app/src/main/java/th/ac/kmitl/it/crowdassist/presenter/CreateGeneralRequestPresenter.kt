@@ -9,8 +9,8 @@ import io.reactivex.Scheduler
 import io.reactivex.functions.Consumer
 import th.ac.kmitl.it.crowdassist.R
 import th.ac.kmitl.it.crowdassist.contract.CreateGeneralRequestContract
-import th.ac.kmitl.it.crowdassist.modal.GeneralRequestModel
-import th.ac.kmitl.it.crowdassist.modal.Request
+import th.ac.kmitl.it.crowdassist.model.GeneralRequestModel
+import th.ac.kmitl.it.crowdassist.model.Request
 import th.ac.kmitl.it.crowdassist.util.DatabaseHelper
 import th.ac.kmitl.it.crowdassist.util.LocationHelper
 import java.io.IOException
