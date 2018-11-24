@@ -2,6 +2,7 @@
     <string name="app_name">CrowdAssist</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="google_direction_api"> </string>
 
     <string name="hint_username">ชื่อผู้ใช้</string>
     <string name="hint_password">รหัสผ่าน</string>
@@ -22,4 +23,7 @@
     </string>
 
     <string name="no_list">ยังไม่มีรายการการร้องขอหรือการช่วยเหลือ\nเริ่มต้นใช้งานแอปพลิเคชั่นกันเถอะ</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

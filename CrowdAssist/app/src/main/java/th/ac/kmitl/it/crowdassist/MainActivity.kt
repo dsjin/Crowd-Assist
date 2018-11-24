@@ -2,6 +2,7 @@ package th.ac.kmitl.it.crowdassist
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -28,9 +29,10 @@ import th.ac.kmitl.it.crowdassist.fragment.SettingFragment
 import th.ac.kmitl.it.crowdassist.util.GoToCallback
 import th.ac.kmitl.it.crowdassist.util.LogoutCallback
 import th.ac.kmitl.it.crowdassist.util.SetButtonListenerCallback
+import th.ac.kmitl.it.crowdassist.util.SetToRateCallback
 import kotlin.properties.Delegates
 
-class MainActivity : AppCompatActivity(), GoToCallback , SetButtonListenerCallback.LongClickListener , SetButtonListenerCallback.ClickListener, LogoutCallback, SharedPreferences.OnSharedPreferenceChangeListener, NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), GoToCallback , SetToRateCallback ,SetButtonListenerCallback.LongClickListener , SetButtonListenerCallback.ClickListener, LogoutCallback, SharedPreferences.OnSharedPreferenceChangeListener, NavigationView.OnNavigationItemSelectedListener {
 
     private var requestingFab : FloatingActionButton? = null
     private var toolbar : Toolbar? = null
@@ -240,5 +242,14 @@ class MainActivity : AppCompatActivity(), GoToCallback , SetButtonListenerCallba
             }
         }
         super.onRestoreInstanceState(savedInstanceState)
+    }
+
+    override fun setToRate() {
+        toolbar?.visibility = View.VISIBLE
+        getFragment(MainFragment())
+        requestingFab?.show()
+        isHome = true
+        val intent = Intent(this, RateActivity::class.java)
+        startActivityForResult(intent, 9002)
     }
 }

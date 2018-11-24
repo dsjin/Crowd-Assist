@@ -71,7 +71,7 @@ class MainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.ConnectionC
                 for (currentLocation in locationResult.locations){
                     mMap?.let{
                         location?.ifNull{
-                            mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(currentLocation!!.getLatitude(), currentLocation!!.getLongitude()), 15f))
+                            mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(currentLocation!!.latitude, currentLocation!!.longitude), 15f))
                         }
                     }
                     location = currentLocation
@@ -166,17 +166,16 @@ class MainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.ConnectionC
         if (!hasPermission(Manifest.permission.ACCESS_FINE_LOCATION))
             return
         fusedLocationClient.lastLocation
-                .addOnSuccessListener({
+                .addOnSuccessListener{
                     currentLocation : Location? ->
                         currentLocation?.let {
                             this.location = currentLocation
                             if (mMap != null) {
-                                mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(this.location!!.getLatitude(), this.location!!.getLongitude()), 15f))
+                                mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(this.location!!.latitude, this.location!!.longitude), 15f))
                             }
-                        } ?:run {
-                            fusedLocationClient.requestLocationUpdates(mLocationRequest, locationCallback, null)
                         }
-                })
+                        fusedLocationClient.requestLocationUpdates(mLocationRequest, locationCallback, null)
+                }
     }
 
     override fun onConnectionSuspended(p0: Int) {

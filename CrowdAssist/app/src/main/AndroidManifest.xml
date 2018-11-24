@@ -39,7 +39,9 @@
 
         <activity android:name=".ProfileListActivity" />
         <activity android:name=".CreateGeneralRequestActivity" />
-        <activity android:name=".RateActivity"></activity>
+        <activity android:name=".RateActivity" />
+        <activity android:name=".ConfirmActivity" />
+        <activity android:name=".RequestInformationActivity"></activity>
     </application>
 
 </manifest>

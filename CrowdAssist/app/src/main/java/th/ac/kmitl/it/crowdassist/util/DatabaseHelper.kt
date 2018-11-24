@@ -1,6 +1,7 @@
 package th.ac.kmitl.it.crowdassist.util
 
 import android.content.Context
+import android.location.Location
 import android.net.Uri
 import android.support.design.widget.Snackbar
 import android.util.Log
@@ -19,6 +20,11 @@ import th.ac.kmitl.it.crowdassist.contract.SignUpContract
 import th.ac.kmitl.it.crowdassist.model.Request
 import th.ac.kmitl.it.crowdassist.model.UserSignUpModel
 import java.util.*
+import com.google.firebase.internal.FirebaseAppHelper.getUid
+import android.R.attr.path
+import com.google.firebase.database.DatabaseReference
+
+
 
 class DatabaseHelper(val ctx : Context){
     private val mAuth : FirebaseAuth = FirebaseAuth.getInstance()
@@ -110,7 +116,7 @@ class DatabaseHelper(val ctx : Context){
         runnerData.put("lng", data.lng)
         runner.setValue(runnerData)
 
-        ref.setValue(data).addOnCompleteListener(OnCompleteListener {
+        ref.setValue(data).addOnCompleteListener{
             task -> run {
                 if (task.isSuccessful) {
                     view.hideCircularProgressBar()
@@ -130,7 +136,7 @@ class DatabaseHelper(val ctx : Context){
                     view.showSnackBar("มีข้อผิดพลาดกรุณาลองใหม่อีกครั้ง", Snackbar.LENGTH_SHORT)
                 }
             }
-        })
+        }
         val sp = ctx.getSharedPreferences(SP_REQUEST, Context.MODE_PRIVATE)
         val editor = sp.edit()
         editor.putString("request_uid", ref.key)
@@ -141,7 +147,6 @@ class DatabaseHelper(val ctx : Context){
         editor.putString("mode", "Helped")
         editor.apply()
     }
-
     fun rate(uid: String, userUid: String, rating: Double?, comment: String, listener: OnCompleteListener<Void>) {
         val ref = mFireStore.collection("request").document(uid).collection(userUid).document(mUser?.uid!!)
         val spProfile = ctx.getSharedPreferences(SP_PROFILE, Context.MODE_PRIVATE)
@@ -151,5 +156,12 @@ class DatabaseHelper(val ctx : Context){
         data.put("name", spProfile.getString("name", ""))
         data.put("timestamp", Calendar.getInstance().timeInMillis)
         ref.set(data).addOnCompleteListener(listener)
+    }
+    fun updateHelperLocation(uid: String?, location: Location?, type: String?) {
+        val ref = mDatabase.reference.child(path.toString() + "_assistance/" + uid + "/user/" + mUser?.uid)
+        val childUpdates = mutableMapOf<String, Any>()
+        childUpdates.put("/lng", location?.longitude!!)
+        childUpdates.put("/lat", location?.latitude!!)
+        ref.updateChildren(childUpdates)
     }
 }
