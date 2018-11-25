@@ -82,8 +82,8 @@ class HelpFragment : Fragment(), OnMapReadyCallback,  GoogleApiClient.Connection
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         if (mGoogleApiClient == null) {
             mGoogleApiClient = GoogleApiClient.Builder(activity!!)
                     .addConnectionCallbacks(this)
