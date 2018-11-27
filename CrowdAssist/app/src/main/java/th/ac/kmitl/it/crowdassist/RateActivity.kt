@@ -106,10 +106,10 @@ class RateActivity : AppCompatActivity(), RateContract.View{
         rateButton = findViewById(R.id.rateButton)
         ignoreButton = findViewById(R.id.ignoreButton)
         rateButton!!.setOnClickListener{
-
+            presenter?.onRateClicked()
         }
         ignoreButton!!.setOnClickListener{
-
+            presenter?.onIgnoreClicked()
         }
     }
 
@@ -134,7 +134,7 @@ class RateActivity : AppCompatActivity(), RateContract.View{
     }
 
     override fun getRating(): Double {
-        return java.lang.Double.parseDouble(java.lang.Float.toString(ratingBar?.rating!!))
+        return ratingBar?.rating!!.toDouble()
     }
 
     override fun getDescription(): String {

@@ -41,7 +41,8 @@
         <activity android:name=".CreateGeneralRequestActivity" />
         <activity android:name=".RateActivity" />
         <activity android:name=".ConfirmActivity" />
-        <activity android:name=".RequestInformationActivity"></activity>
+        <activity android:name=".RequestInformationActivity" />
+        <activity android:name=".ManageRequestingActivity"></activity>
     </application>
 
 </manifest>

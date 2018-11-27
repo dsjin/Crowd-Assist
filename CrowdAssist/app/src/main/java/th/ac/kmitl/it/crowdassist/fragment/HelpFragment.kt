@@ -108,7 +108,7 @@ class HelpFragment : Fragment(), OnMapReadyCallback,  GoogleApiClient.Connection
             data: DataSnapshot? ->  kotlin.run {
             data?.let {
                 this.data = data.getValue(Request::class.java)
-                if (mMap != null){
+                mMap?.let{
                     val options = MarkerOptions()
                             .position(LatLng(this.data?.lat!!, this.data?.lng!!))
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.requester_pin))
@@ -199,6 +199,8 @@ class HelpFragment : Fragment(), OnMapReadyCallback,  GoogleApiClient.Connection
 
     override fun onStart() {
         super.onStart()
+        if (!hasPermission(Manifest.permission.ACCESS_FINE_LOCATION))
+            return
         requesterPointLiveData?.observe(this, Observer<DataSnapshot>{
             data: DataSnapshot? ->  kotlin.run {
                 data?.let {

@@ -164,4 +164,8 @@ class DatabaseHelper(val ctx : Context){
         childUpdates.put("/lat", location?.latitude!!)
         ref.updateChildren(childUpdates)
     }
+
+    fun updateEmergencyTime(emergencyUid: String?, i: Int) {
+
+    }
 }
