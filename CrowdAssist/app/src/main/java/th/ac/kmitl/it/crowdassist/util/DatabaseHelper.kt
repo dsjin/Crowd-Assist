@@ -168,4 +168,8 @@ class DatabaseHelper(val ctx : Context){
     fun updateEmergencyTime(emergencyUid: String?, i: Int) {
 
     }
+
+    fun closeRequest(requestUid: String?, onComplete: OnCompleteListener<Void>, type: String?) {
+
+    }
 }

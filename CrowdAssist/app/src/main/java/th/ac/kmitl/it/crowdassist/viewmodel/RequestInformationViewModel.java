@@ -11,7 +11,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import th.ac.kmitl.it.crowdassist.livedata.FirebaseValueEventLiveData;
 import th.ac.kmitl.it.crowdassist.util.FirebaseSingleValueDataReference;
 
 public class RequestInformationViewModel extends AndroidViewModel {
