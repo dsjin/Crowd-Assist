@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_sending_dialog"
+    android:paddingTop="30dp"
+    android:paddingLeft="35dp"
+    android:paddingRight="35dp"
+    android:paddingBottom="30dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_confirm_dialog"
+        android:textSize="30sp" />
+    <com.chaos.view.PinView
+        android:id="@+id/pinView"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="18sp"
+        app:itemHeight="48dp"
+        app:itemRadius="10dp"
+        app:itemSpacing="20dp"
+        app:itemWidth="43dp"
+        app:lineColor="@color/line_colors"
+        app:lineWidth="2dp"
+        app:viewType="rectangle" />
+    <th.ac.kmitl.it.crowdalert.component.RoundLinearLayout
+        android:id="@+id/confirm_button"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/ripple"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        app:radius="30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.3"
+            android:text="ยืนยัน"
+            android:textSize="30sp"
+            android:textColor="@color/colorTextPrimary" />
+    </th.ac.kmitl.it.crowdalert.component.RoundLinearLayout>
+</LinearLayout>

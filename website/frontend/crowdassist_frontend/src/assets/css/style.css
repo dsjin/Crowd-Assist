@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+@import url("https://use.fontawesome.com/releases/v5.0.7/css/all.css");
+._flex{
+    display: flex;
+}
+._inline_flex{
+    display: inline-flex;
+}
+._flex._column{
+    flex-direction: column
+}
+._flex._row{
+    flex-direction: row
+}
+._flex._center_vertical , ._inline_flex._center_vertical{
+    align-items: center;
+}
+._flex._center_horizontal{
+    justify-content: center
+}
+._flex._wrap{
+    flex-wrap: wrap;
+}
+._color_green{
+    color: darkgreen
+}
+body{
+    margin: 0;
+    transition: all .2s ease-in;
+}
+._2em{
+    font-size: 2em
+}
+._underline:after{
+    border-bottom: 2px solid #000000;
+    content: "";
+    position: absolute;
+    width: 20%;
+    height: 1px;
+    bottom: -20px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+._modal {
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+._content {
+    border-radius: 5px;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    min-height: 90vh;
+    position: relative;
+}
+._modal ._image img{
+    width: 80%;
+    position: relative;
+}
+.button:hover{
+    background-color:#BA3322
+}
+.button{
+    margin-top: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 30px;
+    background-color: #DB4537;
+    transition: all .2s ease-in;
+    cursor: pointer
+}
+.button p{
+    font-family: 'Kanit', sans-serif;
+    color: aliceblue
+}
+.breadcrumb li+li:before{
+    color: black;
+    content: '>\00a0';
+}
+.breadcrumb li:last-child{
+    color: darkgrey
+}
+.breadcrumb a{
+    cursor: pointer;
+}
+.breadcrumb{
+    float: right;
+    background: transparent;
+    margin-top: 0px;
+    margin-bottom: 0;
+    font-size: 12px;
+    padding: 7px 5px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}.breadcrumb li{
+    display: inline;
+}
+.header{
+    position: relative;
+}
+.table_flex{
+    flex-grow: 1;
+    border-collapse:separate;
+    border:solid black 1px;
+    border-radius:6px;
+}
+.table_flex th, .table_flex td {
+    border-left:solid black 1px;
+    border-top:solid black 1px;
+}
+.table_flex th {
+    border-top: none;
+}
+
+.table_flex td:first-child, .table_flex th:first-child {
+    border-left: none;
+}
+.box{
+    background-color: hsl(0, 0%, 96%);
+    border-radius: 5px;
+    box-shadow: 0 2px 3px hsla(0,0%,4%,.1), 0 0 0 1px hsla(0,0%,4%,.1);
+    display: block;
+    padding: 1.25rem;
+}

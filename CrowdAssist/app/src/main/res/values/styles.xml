@@ -1,0 +1,71 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/RsuTextTextViewStyle</item>
+        <item name="editTextStyle">@style/RsuTextEditTextStyle</item>
+    </style>
+    <style name="AppTheme.noActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#DB4537</item>
+        <item name="colorPrimaryDark">#BA3322</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/RsuTextTextViewStyle</item>
+        <item name="editTextStyle">@style/RsuTextEditTextStyle</item>
+        <item name="cardViewStyle">@style/CardView</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    </style>
+
+    <style name="AppTheme.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">#DB4537</item>
+        <item name="colorPrimaryDark">#BA3322</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/RsuTextTextViewStyle</item>
+        <item name="editTextStyle">@style/RsuTextEditTextStyle</item>
+
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SendingDialog">
+        <item name="android:windowMinWidthMajor">50%</item>
+        <item name="android:windowMinWidthMinor">50%</item>
+    </style>
+    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#DB4537</item>
+    </style>
+    <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/colorTextPrimary</item>
+    </style>
+    <style name="RsuTextTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/rsu_text</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="RsuTextEditTextStyle" parent="android:Widget.EditText">
+        <item name="android:fontFamily">@font/rsu_text</item>
+    </style>
+    <style name="NavDrawerTextStyle">
+        <item name="android:fontFamily">@font/rsu_text</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="spinner" parent="android:Widget.Material.Spinner.Underlined"/>
+    <style name="AppTheme.SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+    <style name="NoDisplay" parent="@android:style/Theme.NoDisplay">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+    <style name="RatingBarRed" parent="Widget.AppCompat.RatingBar">
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+    <style name="RatingBarRedMaterialSmall" parent="android:style/Widget.Material.RatingBar.Small">
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+</resources>

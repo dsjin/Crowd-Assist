@@ -1,0 +1,25 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "preserve": "yarn package:functions",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "compile": "yarn run format && yarn run package:functions",
+    "format": "yarn run prettier --write --no-semi ./src/index.js",
+    "logs": "firebase functions:log",
+    "prepackage:functions": "rimraf functions",
+    "package:functions": "babel src --out-dir functions --copy-files --ignore src/node_modules",
+    "postpackage:functions": "cd functions && yarn"
+  },
+  "private": true,
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.32",
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "firebase-tools": "^3.15.3",
+    "prettier": "^1.8.2",
+    "rimraf": "^2.6.2"
+  }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="หน้าหลัก"
+            android:icon="@drawable/ic_home"/>
+        <item
+            android:id="@+id/nav_notification"
+            android:title="การแจ้งเตือน"
+            android:icon="@drawable/ic_notification"/>
+        <item
+            android:id="@+id/nav_profile"
+            android:title="โปรไฟล์"
+            android:icon="@drawable/ic_account"/>
+        <item
+            android:id="@+id/nav_setting"
+            android:title="ตั้งค่า"
+            android:icon="@drawable/ic_setting"/>
+    </group>
+    <!--
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:title="Send" />
+        </menu>
+    </item>-->
+
+</menu>

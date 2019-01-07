@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+body{
+    background-color: #d3d3d3;
+}
+@media (min-width: 1160px){
+    #main {
+        width: 1130px;
+    }
+    .title{
+        font-size: 2em !important
+    }
+  }
+#main{
+    font-family: 'Kanit', sans-serif;
+    border-radius: 20px;
+    background-color: #ffffff;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    min-height: 100vh;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
+}
+.text {
+    text-align: left;
+    margin-left: 50px;
+    margin-right: 50px;
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+}
+._2em{
+    font-size: 2em
+}
+._underline:after{
+    border-bottom: 2px solid #000000;
+    content: "";
+    position: absolute;
+    width: 20%;
+    height: 1px;
+    bottom: -20px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.title{
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px;
+    font-size: 1.2em
+  }

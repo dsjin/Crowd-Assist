@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_sending_dialog"
+    android:paddingTop="30dp"
+    android:paddingLeft="35dp"
+    android:paddingRight="35dp"
+    android:paddingBottom="30dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/attention"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_paragraph1"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ใน ... วินาที"
+        android:id="@+id/countdown"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"/>
+    <th.ac.kmitl.it.crowdalert.component.RoundLinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:radius="40"
+        android:background="@color/colorPrimary"
+        android:padding="5dp"
+        android:id="@+id/cancel_action"
+        android:clickable="true"
+        android:focusable="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ยกเลิก"
+            android:textColor="#FFF"/>
+    </th.ac.kmitl.it.crowdalert.component.RoundLinearLayout>
+</LinearLayout>
