@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="30dp"
+    android:paddingEnd="30dp"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/date"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/status"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_border_round">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/officer_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/officer_accept"
+                android:text="0"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp"
+            android:background="@drawable/bg_border_round">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/user_icon"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/user_accept"
+                android:text="0"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
